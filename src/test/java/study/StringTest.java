@@ -12,14 +12,20 @@ public class StringTest {
     }
 
     @Test
-    void replace2() {
+    void split() {
         String[] actual = "1,2".split(",");
         assertThat(actual).containsExactly("1", "2");
     }
 
     @Test
-    void replace3() {
+    void split2() {
         String[] actual = "1".split(",");
         assertThat(actual).containsExactly("1");
+    }
+
+    @Test
+    void substring() {
+        String actual = "(1,2)".substring(1,4);
+        assertThat(actual).isEqualTo("1,2");
     }
 }
