@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 import org.junit.jupiter.params.provider.ValueSource;
 
 public class SetTest {
@@ -34,6 +35,13 @@ public class SetTest {
     @ValueSource(ints = {1, 2, 3})
     void contains(int num) {
         assertThat(numbers.contains(num)).isTrue();
+    }
+
+    @DisplayName("set의 contains 메서드가 false 결괏값도 잘 반환하는지")
+    @ParameterizedTest
+    @CsvSource(value = {"1:true", "2:true", "3:true", "4:false", "5:false"}, delimiter = ':')
+    void contains2(int num, boolean expected) {
+        assertThat(numbers.contains(num)).isEqualTo(expected);
     }
 
 
